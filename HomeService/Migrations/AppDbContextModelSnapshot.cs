@@ -60,6 +60,35 @@ namespace HomeService.Migrations
                     b.ToTable("ExpertService", (string)null);
                 });
 
+            modelBuilder.Entity("HomeService.Models.Entities.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("OrderId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("UserId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Images");
+                });
+
             modelBuilder.Entity("HomeService.Models.Entities.Offer", b =>
                 {
                     b.Property<int>("Id")
@@ -235,6 +264,25 @@ namespace HomeService.Migrations
                     b.Navigation("Service");
                 });
 
+            modelBuilder.Entity("HomeService.Models.Entities.Image", b =>
+                {
+                    b.HasOne("HomeService.Models.Entities.Order", "Order")
+                        .WithMany("Images")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("HomeService.Models.Entities.User", "User")
+                        .WithMany("Images")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("HomeService.Models.Entities.Offer", b =>
                 {
                     b.HasOne("HomeService.Models.Entities.Order", "Order")
@@ -300,6 +348,8 @@ namespace HomeService.Migrations
 
             modelBuilder.Entity("HomeService.Models.Entities.Order", b =>
                 {
+                    b.Navigation("Images");
+
                     b.Navigation("Offers");
                 });
 
@@ -318,6 +368,8 @@ namespace HomeService.Migrations
             modelBuilder.Entity("HomeService.Models.Entities.User", b =>
                 {
                     b.Navigation("ExpertServices");
+
+                    b.Navigation("Images");
 
                     b.Navigation("OrderCustomers");
 

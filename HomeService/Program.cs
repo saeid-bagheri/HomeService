@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<AppDbContext>(option =>
-option.UseSqlServer("Data Source=.;Initial Catalog=db_HomeService1;Trusted_Connection=True;TrustServerCertificate=True;"));
+option.UseSqlServer("Data Source=.;Initial Catalog=db_HomeService;Trusted_Connection=True;TrustServerCertificate=True;"));
 
 var app = builder.Build();
 

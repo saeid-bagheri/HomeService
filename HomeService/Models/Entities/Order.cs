@@ -23,6 +23,8 @@ public partial class Order
 
     public virtual User? Expert { get; set; }
 
+    public virtual ICollection<Image> Images { get; set; } = new List<Image>();
+
     public virtual ICollection<Offer> Offers { get; set; } = new List<Offer>();
 
     public virtual Service Service { get; set; } = null!;
