@@ -16,4 +16,6 @@ public partial class Service
     public virtual ICollection<ExpertService> ExpertServices { get; set; } = new List<ExpertService>();
 
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+
+    public virtual ICollection<Image> Images { get; set; } = new List<Image>();
 }
