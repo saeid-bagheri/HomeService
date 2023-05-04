@@ -8,13 +8,9 @@
 
   <ItemGroup>
     <Compile Remove="Saeid\**" />
-    <Compile Remove="Services\**" />
     <Content Remove="Saeid\**" />
-    <Content Remove="Services\**" />
     <EmbeddedResource Remove="Saeid\**" />
-    <EmbeddedResource Remove="Services\**" />
     <None Remove="Saeid\**" />
-    <None Remove="Services\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +24,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>
