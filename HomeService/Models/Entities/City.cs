@@ -3,13 +3,11 @@ using System.Collections.Generic;
 
 namespace HomeService.Models.Entities;
 
-public partial class ExpertService
+public partial class City
 {
     public int Id { get; set; }
 
-    public int ExpertId { get; set; }
-
-    public int ServiceId { get; set; }
+    public string Title { get; set; } = null!;
 
     public DateTime? CreatedAt { get; set; }
 
@@ -25,7 +23,5 @@ public partial class ExpertService
 
     public int? DeletedBy { get; set; }
 
-    public virtual Expert Expert { get; set; } = null!;
-
-    public virtual Service Service { get; set; } = null!;
+    public virtual ICollection<Expert> Experts { get; set; } = new List<Expert>();
 }

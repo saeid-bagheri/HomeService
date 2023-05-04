@@ -7,25 +7,39 @@ public partial class Order
 {
     public int Id { get; set; }
 
-    public int ServiceId { get; set; }
+    public int StatusId { get; set; }
 
     public int CustomerId { get; set; }
 
-    public int? ExpertId { get; set; }
+    public int CustomerAddressId { get; set; }
 
-    public DateTime CreateOrderDate { get; set; }
+    public int ServiceCategoryId { get; set; }
 
-    public int CustomerScore { get; set; }
+    public DateTime AvailabilityFrom { get; set; }
 
-    public int ExpertScore { get; set; }
+    public DateTime AvailabilityTo { get; set; }
 
-    public virtual User Customer { get; set; } = null!;
+    public DateTime? ExpertStartedWorkAt { get; set; }
 
-    public virtual User? Expert { get; set; }
+    public DateTime? ExpertFinishedWorkAt { get; set; }
 
-    public virtual ICollection<Image> Images { get; set; } = new List<Image>();
+    public int? ScoreByExpertId { get; set; }
 
-    public virtual ICollection<Offer> Offers { get; set; } = new List<Offer>();
+    public int? ScoreByCustomerId { get; set; }
 
-    public virtual Service Service { get; set; } = null!;
+    public DateTime? CreatedAt { get; set; }
+
+    public int? CreatedBy { get; set; }
+
+    public DateTime? LastModifiedAt { get; set; }
+
+    public int? LastModifiedBy { get; set; }
+
+    public virtual ICollection<Bid> Bids { get; set; } = new List<Bid>();
+
+    public virtual Customer Customer { get; set; } = null!;
+
+    public virtual ICollection<OrderService> OrderServices { get; set; } = new List<OrderService>();
+
+    public virtual OrderStatue Status { get; set; } = null!;
 }
