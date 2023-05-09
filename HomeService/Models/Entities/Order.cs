@@ -41,5 +41,5 @@ public partial class Order
 
     public virtual ICollection<OrderService> OrderServices { get; set; } = new List<OrderService>();
 
-    public virtual OrderStatue Status { get; set; } = null!;
+    public virtual OrderStatus Status { get; set; } = null!;
 }

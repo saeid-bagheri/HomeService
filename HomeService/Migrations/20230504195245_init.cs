@@ -73,7 +73,7 @@ namespace HomeService.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "OrderStatues",
+                name: "OrderStatuses",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false),
@@ -83,7 +83,7 @@ namespace HomeService.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderStatues", x => x.Id);
+                    table.PrimaryKey("PK_OrderStatuses", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -196,7 +196,7 @@ namespace HomeService.Migrations
                     table.ForeignKey(
                         name: "FK_Orders_OrderStatues",
                         column: x => x.StatusId,
-                        principalTable: "OrderStatues",
+                        principalTable: "OrderStatuses",
                         principalColumn: "Id");
                 });
 
@@ -321,6 +321,11 @@ namespace HomeService.Migrations
                         principalColumn: "Id");
                 });
 
+            migrationBuilder.InsertData(
+                table: "Customers",
+                columns: new[] { "Id", "BackupMobileNumber", "Birthdate", "CityId", "CreatedAt", "CreatedBy", "DeletedAt", "DeletedBy", "FirstName", "GenderId", "IsDeleted", "LastModifiedAt", "LastModifiedBy", "LastName", "MobileNumber", "ScoreAvg", "UserId" },
+                values: new object[] { 1, "09121213322", new DateTime(2009, 5, 9, 9, 15, 0, 0, DateTimeKind.Unspecified), 1, new DateTime(2023, 5, 9, 9, 15, 0, 0, DateTimeKind.Unspecified), 12, null, null, "ali", 0, false, new DateTime(2023, 5, 5, 0, 22, 44, 898, DateTimeKind.Local).AddTicks(5717), 12, "MMMM", "09361458723", 12, null });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Bids_ExpertId",
                 table: "Bids",
@@ -416,7 +421,7 @@ namespace HomeService.Migrations
                 name: "Customers");
 
             migrationBuilder.DropTable(
-                name: "OrderStatues");
+                name: "OrderStatuses");
 
             migrationBuilder.DropTable(
                 name: "ServiceCategories");

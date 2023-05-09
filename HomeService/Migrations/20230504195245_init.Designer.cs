@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HomeService.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230504123445_init")]
+    [Migration("20230504195245_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -197,6 +197,25 @@ namespace HomeService.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Customers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BackupMobileNumber = "09121213322",
+                            Birthdate = new DateTime(2009, 5, 9, 9, 15, 0, 0, DateTimeKind.Unspecified),
+                            CityId = 1,
+                            CreatedAt = new DateTime(2023, 5, 9, 9, 15, 0, 0, DateTimeKind.Unspecified),
+                            CreatedBy = 12,
+                            FirstName = "ali",
+                            GenderId = 0,
+                            IsDeleted = false,
+                            LastModifiedAt = new DateTime(2023, 5, 5, 0, 22, 44, 898, DateTimeKind.Local).AddTicks(5717),
+                            LastModifiedBy = 12,
+                            LastName = "MMMM",
+                            MobileNumber = "09361458723",
+                            ScoreAvg = 12
+                        });
                 });
 
             modelBuilder.Entity("HomeService.Models.Entities.CustomerAddress", b =>
@@ -470,7 +489,7 @@ namespace HomeService.Migrations
                     b.ToTable("OrderServices");
                 });
 
-            modelBuilder.Entity("HomeService.Models.Entities.OrderStatue", b =>
+            modelBuilder.Entity("HomeService.Models.Entities.OrderStatus", b =>
                 {
                     b.Property<int>("Id")
                         .HasColumnType("int");
@@ -488,7 +507,7 @@ namespace HomeService.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OrderStatues");
+                    b.ToTable("OrderStatuses");
                 });
 
             modelBuilder.Entity("HomeService.Models.Entities.Service", b =>
@@ -631,7 +650,7 @@ namespace HomeService.Migrations
                         .IsRequired()
                         .HasConstraintName("FK_Orders_Customers");
 
-                    b.HasOne("HomeService.Models.Entities.OrderStatue", "Status")
+                    b.HasOne("HomeService.Models.Entities.OrderStatus", "Status")
                         .WithMany("Orders")
                         .HasForeignKey("StatusId")
                         .IsRequired()
@@ -703,7 +722,7 @@ namespace HomeService.Migrations
                     b.Navigation("OrderServices");
                 });
 
-            modelBuilder.Entity("HomeService.Models.Entities.OrderStatue", b =>
+            modelBuilder.Entity("HomeService.Models.Entities.OrderStatus", b =>
                 {
                     b.Navigation("Orders");
                 });

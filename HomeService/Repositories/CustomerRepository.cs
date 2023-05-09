@@ -18,11 +18,11 @@ namespace HomeService.Repositories
             _appDbContext.SaveChanges();
         }
 
-        public void DeleteById(int id, int deletedByUserId)
+        public void DeleteById(int id, int UserId)
         {
             var currentCustomer = _appDbContext.Customers.FirstOrDefault(c => c.Id == id);
             currentCustomer.IsDeleted = true;
-            currentCustomer.DeletedBy = deletedByUserId;
+            currentCustomer.DeletedBy = UserId;
             currentCustomer.DeletedAt = DateTime.Now;
             _appDbContext.SaveChanges();
         }
@@ -50,11 +50,5 @@ namespace HomeService.Repositories
             currentCustomer.LastModifiedBy = customer.LastModifiedBy;
             _appDbContext.SaveChanges();
         }
-
-
-        //public void SaveChanges()
-        //{
-        //    _appDbContext.SaveChanges();
-        //}
     }
 }

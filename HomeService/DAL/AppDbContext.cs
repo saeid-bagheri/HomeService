@@ -32,7 +32,7 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<OrderService> OrderServices { get; set; }
 
-    public virtual DbSet<OrderStatue> OrderStatues { get; set; }
+    public virtual DbSet<OrderStatus> OrderStatuses { get; set; }
 
     public virtual DbSet<Service> Services { get; set; }
 
@@ -166,7 +166,7 @@ public partial class AppDbContext : DbContext
                 .HasConstraintName("FK_OrderServices_Services");
         });
 
-        modelBuilder.Entity<OrderStatue>(entity =>
+        modelBuilder.Entity<OrderStatus>(entity =>
         {
             entity.Property(e => e.Id).ValueGeneratedNever();
             entity.Property(e => e.Title).HasMaxLength(250);
