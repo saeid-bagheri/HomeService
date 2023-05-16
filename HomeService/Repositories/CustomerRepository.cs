@@ -29,7 +29,7 @@ namespace HomeService.Repositories
 
         public Customer GetById(int id)
         {
-            return _appDbContext.Customers.FirstOrDefault(c => c.Id == id);
+            return _appDbContext.Customers.FirstOrDefault(c => c.Id == id)!;
         }
 
         public List<Customer> GetCustomers()

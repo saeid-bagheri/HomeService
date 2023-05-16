@@ -28,7 +28,7 @@ namespace HomeService.Repositories
 
         public Expert GetById(int id)
         {
-            return _appDbContext.Experts.FirstOrDefault(e => e.Id == id);
+            return _appDbContext.Experts.FirstOrDefault(e => e.Id == id)!;
         }
 
         public List<Expert> GetExperts()
